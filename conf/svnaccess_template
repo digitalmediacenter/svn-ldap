@@ -1,0 +1,35 @@
+################################################################################################
+###
+### TEMPLATE
+###
+### This is a template for a a subversion acl file
+###
+### LDAP Groups are added by their destinguished name (DN)
+### 
+### Template-Example:
+### @{CN=wiki_admingroup_M,OU=Wiki,OU=Unix,OU=administrative,OU=Stuttgart,DC=foobar,DC=local::<user> = rw}
+###
+### Expanded permission:
+### bob = rw
+### alice = rw
+### fred = rw
+### mario = rw
+###
+
+[groups]
+svn-admins = admin1, admin2
+
+[/]
+* =
+
+
+[project1:/]
+@svn-admins = rw
+@{CN=wiki_admingroup_M,OU=Wiki,OU=Unix,OU=administrative,OU=Stuttgart,DC=foobar,DC=local::<user> = r}
+@{CN=wiki_admingroup_M,OU=Wiki,OU=Unix,OU=administrative,OU=Stuttgart,DC=foobar,DC=local::<user> = rw}
+
+[project:/]
+@svn-admins = rw
+marcy = r
+@{CN=wiki_admingroup_M,OU=Wiki,OU=Unix,OU=administrative,OU=Stuttgart,DC=foobar,DC=local::<user> = rw}
+
